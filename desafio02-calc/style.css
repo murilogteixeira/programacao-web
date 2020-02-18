@@ -1,0 +1,17 @@
+.operandosContainer {
+    display: flex;
+    flex-flow: column wrap;
+    width: 200px;
+}
+
+.botoesContainer {
+    width: 200px;
+    display: flex;
+    padding-top: 10px;
+    justify-content: space-between;
+}
+
+.botao {
+    background-color: gold;
+    width: 50px;
+}
