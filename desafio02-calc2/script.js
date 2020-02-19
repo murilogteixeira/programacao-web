@@ -1,3 +1,9 @@
+function adicionarNumero(valor) {
+    var numero = document.getElementById('numero')
+    numero.value = valor.value;
+    // alert(valor);
+}
+
 function somar() {
     var op1 = document.getElementById('nmbOp1').value;
     var op2 = document.getElementById('nmbOp2').value;

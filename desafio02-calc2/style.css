@@ -4,12 +4,13 @@
 
 .operandosContainer {
     border: 1px solid black;
-    height: 20px;
+    height: 25px;
     width: 95%;
     margin: auto;
 }
 
 .numerosContainer {
+    margin-top: 5px;
     display: grid;
     align-content: center;
     grid-template-columns: repeat(3, auto);
@@ -18,7 +19,7 @@
 .botoesContainer {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .botao {
