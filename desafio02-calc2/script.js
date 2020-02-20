@@ -1,6 +1,7 @@
 var label = '';
 var calculo = 0;
-var valorAtual = 0;
+var operadores = [0,0];
+var i = 0;
 var operadorSelecionado = null;
 
 window.onload = function() {
@@ -13,39 +14,39 @@ function botaoPressionado(valor) {
     }
 
     label.value += valor;
-    valorAtual = parseInt(label.value);
+    operadores[i] = parseInt(label.value);
 }
 
 function limpar() {
     label.value = '';
     calculo = 0;
-    valorAtual = 0;
+    op1 = 0;
     operadorSelecionado = null;
 }
 
 function somar() {
-    calculo = calculo + valorAtual;
+    calculo = op1 + op2;
     operadorSelecionado = '+';
-    valorAtual = 0;
+    op1 = 0;
 }
 
 function subtrair() {
-    calculo = calculo === 0 ? valorAtual : calculo - valorAtual;
+    calculo = op1 - op2;
     operadorSelecionado = '-';
-    valorAtual = 0;
+    op1 = 0;
 }
 
 function multiplicar() {
-    calculo = calculo === 0 ? valorAtual : calculo * valorAtual;
+    calculo = op1 * op2;
     operadorSelecionado = '*';
-    valorAtual = 0;
+    op1 = 0;
     console.log(calculo);
 }
 
 function dividir() {
-    calculo = calculo === 0 ? valorAtual : calculo / valorAtual;
+    calculo = op1 / op2;
     operadorSelecionado = '/';
-    valorAtual = 0;
+    op1 = 0;
     console.log(calculo);
 }
 
