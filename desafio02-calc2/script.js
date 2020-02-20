@@ -1,65 +1,73 @@
-function adicionarNumero(valor) {
-    var numero = document.getElementById('numero')
-    numero.value = valor.value;
-    // alert(valor);
+var label = '';
+var calculo = 0;
+var valorAtual = 0;
+var operadorSelecionado = null;
+
+window.onload = function() {
+    this.label = document.getElementById('txtNumero');
+}
+
+function botaoPressionado(valor) {
+    if (operadorSelecionado) {
+        label.value = '';
+    }
+
+    label.value += valor;
+    valorAtual = parseInt(label.value);
+}
+
+function limpar() {
+    label.value = '';
+    calculo = 0;
+    valorAtual = 0;
+    operadorSelecionado = null;
 }
 
 function somar() {
-    var op1 = document.getElementById('nmbOp1').value;
-    var op2 = document.getElementById('nmbOp2').value;
-
-    if(op1 === '' || op2 === '') {
-        alert('Operador(es) não pode(m) ser nulo(s).');
-        return;
-    }
-
-    op1 = parseInt(op1, 10);
-    op2 = parseInt(op2, 10);
-
-    alert('Resultado da soma: ' + (op1 + op2));
+    calculo = calculo + valorAtual;
+    operadorSelecionado = '+';
+    valorAtual = 0;
 }
 
 function subtrair() {
-    var op1 = document.getElementById('nmbOp1').value;
-    var op2 = document.getElementById('nmbOp2').value;
-
-    if(op1 === '' || op2 === '') {
-        alert('Operador(es) não pode(m) ser nulo(s).');
-        return;
-    }
-
-    op1 = parseInt(op1, 10);
-    op2 = parseInt(op2, 10);
-
-    alert('Resultado da subtração: ' + (op1 - op2))
+    calculo = calculo === 0 ? valorAtual : calculo - valorAtual;
+    operadorSelecionado = '-';
+    valorAtual = 0;
 }
 
 function multiplicar() {
-    var op1 = document.getElementById('nmbOp1').value;
-    var op2 = document.getElementById('nmbOp2').value;
-
-    if(op1 === '' || op2 === '') {
-        alert('Operador(es) não pode(m) ser nulo(s).');
-        return;
-    }
-
-    op1 = parseInt(op1, 10);
-    op2 = parseInt(op2, 10);
-
-    alert('Resultado da multiplicação: ' + (op1 * op2))
+    calculo = calculo === 0 ? valorAtual : calculo * valorAtual;
+    operadorSelecionado = '*';
+    valorAtual = 0;
+    console.log(calculo);
 }
 
 function dividir() {
-    var op1 = document.getElementById('nmbOp1').value;
-    var op2 = document.getElementById('nmbOp2').value;
+    calculo = calculo === 0 ? valorAtual : calculo / valorAtual;
+    operadorSelecionado = '/';
+    valorAtual = 0;
+    console.log(calculo);
+}
 
-    if(op1 === '' || op2 === '') {
-        alert('Operador(es) não pode(m) ser nulo(s).');
-        return;
+function resultado() {
+    switch (operadorSelecionado) {
+    case '+':
+        somar();
+        break;
+    case '-':
+        subtrair();
+        break;
+    case '*':
+        multiplicar();
+        break;
+    case '/':
+        dividir();
+        break;
+    default:
+        calculo = label.value;
+        break;
     }
-
-    op1 = parseInt(op1, 10);
-    op2 = parseInt(op2, 10);
-
-    alert('Resultado da divisão: ' + (op1 / op2))
+    operadorSelecionado = null;
+    label.value = calculo;
+    console.log(calculo);
 }

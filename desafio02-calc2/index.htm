@@ -6,30 +6,34 @@
         <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
+        <h1>Calculadora1</h1>
+        <div class="operandosContainer">
+            <input class="label" type="text" id="txtNumero">
+        </div>
         <section class="calculadora">
-            <h1>Calculadora1</h1>
-            <div class="operandosContainer">
-                <label id="numero"></label>
-            </div>
             <div class="numerosContainer">
-                <input class="botao" type="button" value="1" onclick="adicionarNumero(this)">
-                <input class="botao" type="button" value="2" onclick="">
-                <input class="botao" type="button" value="3" onclick="">
-                <input class="botao" type="button" value="4" onclick="">
-                <input class="botao" type="button" value="5" onclick="">
-                <input class="botao" type="button" value="6" onclick="">
-                <input class="botao" type="button" value="7" onclick="">
-                <input class="botao" type="button" value="8" onclick="">
-                <input class="botao" type="button" value="9" onclick="">
-                <input class="botao" type="button" value="" onclick="">
-                <input class="botao" type="button" value="0" onclick="">
-                <input class="botao" type="button" value="." onclick="">
+                <input class="botaoNumero" type="button" value="C" onclick="limpar()">
+                <input class="botaoNumero" type="button" value="1" onclick="botaoPressionado(parseInt(this.value))">
+                <input class="botaoNumero" type="button" value="4" onclick="botaoPressionado(parseInt(this.value))">
+                <input class="botaoNumero" type="button" value="7" onclick="botaoPressionado(parseInt(this.value))">
+                <input class="desabilitado" type="button" value="">
+                <input class="desabilitado" type="button" value="">
+                <input class="botaoNumero" type="button" value="2" onclick="botaoPressionado(parseInt(this.value))">
+                <input class="botaoNumero" type="button" value="5" onclick="botaoPressionado(parseInt(this.value))">
+                <input class="botaoNumero" type="button" value="8" onclick="botaoPressionado(parseInt(this.value))">
+                <input class="botaoNumero" type="button" value="0" onclick="botaoPressionado(parseInt(this.value))">
+                <input class="desabilitado" type="button" value="">
+                <input class="botaoNumero" type="button" value="3" onclick="botaoPressionado(parseInt(this.value))">
+                <input class="botaoNumero" type="button" value="6" onclick="botaoPressionado(parseInt(this.value))">
+                <input class="botaoNumero" type="button" value="9" onclick="botaoPressionado(parseInt(this.value))">
+                <input class="desabilitado" type="button" value="">
             </div>
             <div class="botoesContainer">
-                <input class="botao" type="button" value="+" onclick="somar()">
-                <input class="botao" type="button" value="-" onclick="subtrair()">
-                <input class="botao" type="button" value="*" onclick="multiplicar()">
-                <input class="botao" type="button" value="/" onclick="dividir()">
+                <input class="botaoOperador" type="button" value="+" onclick="somar()">
+                <input class="botaoOperador" type="button" value="-" onclick="subtrair()">
+                <input class="botaoOperador" type="button" value="*" onclick="multiplicar()">
+                <input class="botaoOperador" type="button" value="/" onclick="dividir()">
+                <input class="botaoOperador" type="button" value="=" onclick="resultado()">
             </div>
         </section>
         
