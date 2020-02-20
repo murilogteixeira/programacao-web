@@ -8,7 +8,7 @@ window.onload = function() {
     this.label = document.getElementById('txtNumero');
 }
 
-function botaoPressionado(valor) {
+function numeroPressionado(valor) {
     if (operadorSelecionado) {
         label.value = '';
     }
