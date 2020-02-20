@@ -1,57 +1,63 @@
 var label = '';
 var calculo = 0;
-var operadores = [0,0];
 var i = 0;
-var operadorSelecionado = null;
+var operando = [null,null];
+var operador = null;
 
 window.onload = function() {
     this.label = document.getElementById('txtNumero');
 }
 
 function numeroPressionado(valor) {
-    if (operadorSelecionado) {
+    if (operador) {
         label.value = '';
     }
 
     label.value += valor;
-    operadores[i] = parseInt(label.value);
+    operando[i] = parseInt(label.value);
 }
 
 function limpar() {
     label.value = '';
     calculo = 0;
     op1 = 0;
-    operadorSelecionado = null;
+    operador = null;
 }
 
 function somar() {
-    calculo = op1 + op2;
-    operadorSelecionado = '+';
-    op1 = 0;
+    if (operando[0] && operando[1]) {
+        calculo = operando[0] + operando[1];
+    }
+
+    if (i === 0) {
+        i++;
+    }
+    
+    operador = '+';
 }
 
 function subtrair() {
     calculo = op1 - op2;
-    operadorSelecionado = '-';
+    operador = '-';
     op1 = 0;
 }
 
 function multiplicar() {
     calculo = op1 * op2;
-    operadorSelecionado = '*';
+    operador = '*';
     op1 = 0;
     console.log(calculo);
 }
 
 function dividir() {
     calculo = op1 / op2;
-    operadorSelecionado = '/';
+    operador = '/';
     op1 = 0;
     console.log(calculo);
 }
 
 function resultado() {
-    switch (operadorSelecionado) {
+    switch (operador) {
     case '+':
         somar();
         break;
@@ -68,7 +74,7 @@ function resultado() {
         calculo = label.value;
         break;
     }
-    operadorSelecionado = null;
+    operador = null;
     label.value = calculo;
     console.log(calculo);
 }
