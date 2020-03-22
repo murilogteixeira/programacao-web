@@ -3,6 +3,7 @@ package com.murilo.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +35,12 @@ public class CalculadoraServlet extends HttpServlet {
 				+ calcular(operador1, operador2, txtOperador));
 		out.print("<body>");
 		out.print("<html>");
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RequestDispatcher rd = req.getRequestDispatcher("/");
+		rd.include(req, resp);
 	}
 
 	Float calcular(Float op1, Float op2, String operador) {
