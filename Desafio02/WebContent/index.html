@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calculadora</title>
+<link  type="text/css" rel="stylesheet" href="style.css">
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+	<h3>Calculadora Servlet</h3>
+	<form action="calcular" method="post">
+		<input type="text" placeholder="Operador 1" name="nmbOperando1" id="nmbOperando1" onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46 || event.charCode == 44'><br>
+		<input type="text" placeholder="Operador 2" name="nmbOperando2" id="nmbOperando2" onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46 || event.charCode == 44'><br>
+		
+		<input type="radio" class="btn" id="somar" name="txtOperador" value="+">
+		<label for="somar">+</label>
+		
+		<input type="radio" class="btn" id="subtrair" name="txtOperador" value="-">
+		<label for="subtrair">-</label>
+		
+		<input type="radio" class="btn" id="multiplicar" name="txtOperador" value="*">
+		<label for="multiplicar">*</label>
+		
+		<input type="radio" class="btn" id="dividir" name="txtOperador" value="/">
+		<label for="dividir">/</label>
+	
+		<br>
+
+		<input type="submit" value="Calcular" onclick="pressed()">
+	</form>
+</body>
+</html>

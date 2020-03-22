@@ -1,0 +1,36 @@
+@charset "UTF-8";
+body {
+	width: 250px;
+}
+
+h3 {
+	text-align: center;
+}
+
+input {
+	width: 100%;
+}
+
+label {
+	text-align: center;
+}
+
+/*remove o botao arredondado*/
+input[type=radio] {
+	display: none;
+	margin: 10px;
+}
+
+/*adiciona cor de fundo e largura nos botoes*/
+input[type=radio]+label {
+	display: inline-block;
+	width: 23%;
+	background-color: #e7e7e7;
+	border-color: #ddd;
+}
+
+/*define a cor do botao selecionado*/
+input[type=radio]:checked+label {
+	background-image: none;
+	background-color: #ccc;
+}
