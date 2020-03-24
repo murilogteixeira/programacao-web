@@ -33,8 +33,10 @@ public class CalcularServlet extends HttpServlet {
 				
 		Calculadora calc = new Calculadora();
 		Double resultado = calc.calcular(num1, num2, operador);
+		
 		req.setAttribute("num1", num1);
 		req.setAttribute("num2", num2);
+		req.setAttribute("operador", operador);
 		req.setAttribute("resultado", resultado);
 		req.getRequestDispatcher("index.jsp").forward(req, resp);
 	}
