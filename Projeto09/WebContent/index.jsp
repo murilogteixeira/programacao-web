@@ -21,7 +21,7 @@ String resultado;
 if (objResult == null) {
 	num1 = "";
 	num2 = "";
-	resultado = "";
+	resultado = ""; 
 }
 else {
 	num1 = objNum1.toString();
