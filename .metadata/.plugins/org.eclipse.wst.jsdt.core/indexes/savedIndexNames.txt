@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+/Users/muriloteixeira/git/programacao-web/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3826500032.index
+1009224880.index
+582054491.index
+1734260067.index
+1663896208.index
+2163999571.index
