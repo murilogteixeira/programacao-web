@@ -18,9 +18,12 @@ public class CalcularIMCServlet extends HttpServlet {
 		Double altura = Double.parseDouble(req.getParameter("altura")) / 100;
 		
 		Double resultadoCalculo = calculaIMC(peso, altura);
-		
+//		
 		req.setAttribute("imc", resultadoCalculo);
 		req.getRequestDispatcher("resultado.jsp").forward(req, resp);
+		
+//		req.getSession().setAttribute("imc", resultadoCalculo);
+//		resp.sendRedirect("resultado.jsp");
 	}
 	
 	Double calculaIMC(Double peso, Double altura) {
