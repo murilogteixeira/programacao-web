@@ -1,0 +1,23 @@
+@charset "UTF-8";
+body {
+	font-family: 'Sans-Serif';
+}
+
+.result {
+	text-align: center;
+	width: 80%;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th {
+	background-color: #B3A07F;
+	color: #fff;
+}
+
+tr:nth-child(even) {
+	background-color: #e6e6e6;
+}
