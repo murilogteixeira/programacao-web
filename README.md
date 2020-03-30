@@ -6,8 +6,8 @@ Exercícios realizados na disciplina Programação Web 2020/1 no curso de Ciênc
 - JavaScript
 - CSS
 - JavaWeb
-  - Servlet
-  - JSP
+- Servlet
+- JSP
 ## Repositório
 |Nome do Projeto|Tecnologias|Link|
 |---------------|-----------|----|
