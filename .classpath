@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="Desafio02/src"/>
-	<classpathentry kind="src" path="projeto06/src"/>
-	<classpathentry kind="src" path="ProjetoCaelum/src"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
