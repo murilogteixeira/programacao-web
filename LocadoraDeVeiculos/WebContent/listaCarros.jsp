@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="java.util.ArrayList"%>
-    
+
+<%@page import="java.util.ArrayList, br.com.dao.*" %>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -17,17 +18,29 @@
   <body>
   
   	<c:import url="nav.jsp"/>
-  	<%@page import="br.com.beans.VeiculoBeans" %>
-  	<%
-  		ArrayList<VeiculoBeans> carros = new ArrayList<>();
-		carros.add(new VeiculoBeans("VW", "Gol", "a"));
-		carros.add(new VeiculoBeans("Chevy", "Camaro", "b"));
-		carros.add(new VeiculoBeans("Dodge", "RAM", "c"));
-  	%>
   	
-  	<div class="container">
-  		<c:forEach var="carro" items="<%=carros %>">
-  			<p>${carro.marca} ${ carro.modelo } ${ carro.foto }</p>
+    <jsp:useBean id="dao" class="br.com.dao.VeiculoDAO"/>
+  
+  	<div class="container py-5">
+  		<c:forEach var="carro" items="${ dao.lista() }">
+	  		<div class="card">
+		  		<div class="card-body">
+		  			<div class="row">
+		  				<div class="col">
+		  					${ carro.modelo }
+		  				</div>
+		  				<div class="col">
+		  					${ carro.marca }
+		  				</div>
+		  				<div class="col">
+		  					${ carro.preco }
+		  				</div>
+		  				<div class="col-sm-4">
+		  					<img class="w-75 rounded" src="${ carro.foto }">
+		  				</div>
+		  			</div>
+		  		</div>
+  			</div>
   		</c:forEach>
   	</div>
 

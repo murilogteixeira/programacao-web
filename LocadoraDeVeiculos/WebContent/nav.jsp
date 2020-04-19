@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -9,7 +7,7 @@
   	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 	  		<div class="container">
 	  		
-		  		<a class="navbar-brand h1 mb-0" href="index.jsp">Locadora de VeÃ­culos</a>
+		  		<a class="navbar-brand h1 mb-0" href="index.jsp">Locadora de Veículos</a>
 		  		
 		  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
 		  			<span class="navbar-toggler-icon"></span>
@@ -19,7 +17,7 @@
 		  		
 		  			<ul class="navbar-nav mr-auto">
 		  				<li class="navbar-item">
-		  					<a class="nav-link" href="index.jsp">InÃ­cio</a>
+		  					<a class="nav-link" href="index.jsp">Início</a>
 		  				</li>
 		  				
 		  				<li class="navbar-item">
