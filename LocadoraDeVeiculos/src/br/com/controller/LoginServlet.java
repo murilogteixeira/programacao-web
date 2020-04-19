@@ -1,6 +1,7 @@
 package br.com.controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,10 +42,12 @@ public class LoginServlet extends HttpServlet {
 		String senha = request.getParameter("txtSenha");
 		
 		if(email.equals("m@m.com") && senha.equals("123")) {
+			request.getSession().setAttribute("logado", true);
+			request.getSession().setAttribute("dataHoraLogin", new Date());
 			response.sendRedirect("listaCarros.jsp");
 		}
 		else {
-			request.setAttribute("msg", "Email ou senha inválido.");
+			request.setAttribute("msg", "Email ou senha inválido!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}

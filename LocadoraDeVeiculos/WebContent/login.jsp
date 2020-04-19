@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="true" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,13 +15,25 @@
 <title>Login - Locadora</title>
 </head>
 <body>
+
+  	<!-- Validar usuario logado -->
+  	<%
+  	Object logado = session.getAttribute("logado");
+  	if(logado != null) {
+  		if((boolean)logado) {
+  			response.sendRedirect("listaCarros.jsp");
+  			return;
+  		}
+  	}
+  	%>
+  	
 	<!-- Navbar -->
 	<c:import url="nav.jsp"/>
 
 	<!-- Form login -->
 	<div class="container my-5">
 		<div class="row justify-content-center">
-			<div class="col-6 pt-5">
+			<div class="col-9 pt-5">
 				<div class="card">
 					<div class="card-body">
 					

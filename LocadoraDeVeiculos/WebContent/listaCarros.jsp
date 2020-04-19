@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@page import="java.util.ArrayList, br.com.dao.*" %>
-
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -17,11 +15,41 @@
   </head>
   <body>
   
+  	<!-- Validar usuario logado -->
+  	<%
+  	Object logado = session.getAttribute("logado");
+  	/* out.write(session.getAttribute("dataHoraLogin").toString()); */
+  	if(logado == null) {
+  		response.sendRedirect("login.jsp");
+  		return;
+  	}
+  	else {
+  		if(!(boolean)logado) {
+  			response.sendRedirect("login.jsp");
+  	  		return;
+  		}
+  	}
+  	%>
+  
+  	<!-- Navbar -->
   	<c:import url="nav.jsp"/>
   	
+  	<!-- Menu -->
+  	<div class="container">
+  		<div class="row">
+			<div class="col my-2">
+				<div class="float-right">
+					<a href="cadastrarVeiculo.jsp" class="btn btn-primary" role="button" aria-pressed="true">Novo Veículo</a>
+				</div>
+			</div>
+  		</div>
+	</div>
+  
+  	<!-- Instanciar dao -->
     <jsp:useBean id="dao" class="br.com.dao.VeiculoDAO"/>
   
-  	<div class="container py-5">
+  	<!-- Exibir veiculos -->
+  	<div class="container py-1">
   		<c:forEach var="carro" items="${ dao.lista() }">
 	  		<div class="card mb-2">
 		  		<div class="card-body">
