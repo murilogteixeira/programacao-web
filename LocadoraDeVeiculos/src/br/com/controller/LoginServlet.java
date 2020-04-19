@@ -37,8 +37,16 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-//		request.getRequestDispatcher("listaCarros.jsp").forward(request, response);
-		response.sendRedirect("listaCarros.jsp");
+		String email = request.getParameter("txtEmail");
+		String senha = request.getParameter("txtSenha");
+		
+		if(email.equals("m@m.com") && senha.equals("123")) {
+			response.sendRedirect("listaCarros.jsp");
+		}
+		else {
+			request.setAttribute("msg", "Email ou senha inválido.");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
 	}
 
 }

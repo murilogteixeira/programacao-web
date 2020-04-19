@@ -23,7 +23,7 @@
   
   	<div class="container py-5">
   		<c:forEach var="carro" items="${ dao.lista() }">
-	  		<div class="card">
+	  		<div class="card mb-2">
 		  		<div class="card-body">
 		  			<div class="row">
 		  				<div class="col">

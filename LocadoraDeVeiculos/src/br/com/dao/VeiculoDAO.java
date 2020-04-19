@@ -12,6 +12,7 @@ public class VeiculoDAO {
 			lista = new ArrayList<>();
 			VeiculoBean veiculo = new VeiculoBean("VW", "Gol", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, getProxId());
 			lista.add(veiculo);
+			lista.add(veiculo);
 		}
 	}
 	
