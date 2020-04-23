@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.bo.VeiculoBO;
-
 /**
- * Servlet implementation class ListaCarros
+ * Servlet implementation class IndexServlet
  */
-@WebServlet("/VeiculoServlet")
-public class VeiculoServlet extends HttpServlet {
+@WebServlet("/")
+public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VeiculoServlet() {
+    public IndexServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,7 +27,7 @@ public class VeiculoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("./src/pages/index.jsp");
 	}
 
 	/**
@@ -37,17 +35,7 @@ public class VeiculoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		String marca = request.getParameter("txtMarca");
-		String modelo = request.getParameter("txtModelo");
-		String foto = request.getParameter("txtFoto");
-		Double preco = Double.parseDouble(request.getParameter("txtPreco"));
-		
-		VeiculoBO veiculoBO = new VeiculoBO();
-		boolean carroInserido = veiculoBO.insereVeiculo(marca, modelo, foto, preco);
-		
-		request.getSession().setAttribute("veiculoCadastrado", carroInserido);
-		response.sendRedirect("listaCarros.jsp");
+		doGet(request, response);
 	}
 
 }

@@ -9,7 +9,7 @@ public class VeiculoBO {
 	public boolean insereVeiculo(String marca, String modelo, String foto, Double preco) {
 		VeiculoBean veiculoBean = new VeiculoBean(marca, modelo, foto, preco, VeiculoDAO.getProxId());
 		
-		if(VeiculoDAO.insereVeiculo(veiculoBean)) {
+		if(veiculoDAO.insereVeiculo(veiculoBean)) {
 			return true;
 		}
 		

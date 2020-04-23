@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("index.jsp");
 	}
 
 	/**
@@ -38,6 +38,21 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		switch ((String)request.getSession().getAttribute("loginOption")) {
+		case "entrar":
+			entrar(request, response);
+			break;
+		case "sair":
+			sair(request, response);
+			break;
+
+		default:
+			doGet(request, response);
+		}
+		
+	}
+	
+	private void entrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		String email = request.getParameter("txtEmail");
 		String senha = request.getParameter("txtSenha");
 		
@@ -50,6 +65,11 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("msg", "Email ou senha inválido!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
+	}
+	
+	private void sair(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+		request.getSession().setAttribute("logado", false);
+		doGet(request, response);
 	}
 
 }

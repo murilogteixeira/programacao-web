@@ -17,7 +17,7 @@
 <body>
 
   	<!-- Validar usuario logado -->
-  	<%
+  	<%-- <%
   	Object logado = session.getAttribute("logado");
   	if(logado != null) {
   		if((boolean)logado) {
@@ -25,15 +25,15 @@
   			return;
   		}
   	}
-  	%>
+  	%> --%>
   	
 	<!-- Navbar -->
-	<c:import url="nav.jsp"/>
+  	<c:import url="../components/nav.jsp"/>
 
 	<!-- Form login -->
 	<div class="container my-5">
 		<div class="row justify-content-center">
-			<div class="col-9 pt-5">
+			<div class="col col-md-9 col-lg-7 col-xl-6 pt-5">
 				<div class="card">
 					<div class="card-body">
 					
@@ -54,7 +54,12 @@
 							
 							<button type="submit" class="btn btn-primary w-100 my-1">Entrar</button>
 							
+							<div class="form-group text-center mt-2 mb-0">
+								<a class="btn btn-link" href="cadastroUsuario.jsp">Não é cadastrado? Cadastre-se aqui.</a>
+							</div>
+						
 						</form>
+						
 						
 					</div>
 				</div>
