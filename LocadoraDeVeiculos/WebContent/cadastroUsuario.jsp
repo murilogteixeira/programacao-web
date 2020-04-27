@@ -16,23 +16,43 @@
   </head>
   <body>
   
+  <!-- Validar usuario logado -->
   <%
-	String erro = request.getParameter("erroForm");
-  	
-  	if(erro != null) {
-  		
-  	}
+  if(!(boolean)session.getAttribute("logado")) {
+	  response.sendRedirect("index.jsp");
+  }
   %>
   
   	<!-- Navbar -->
-  	<c:import url="../components/nav.jsp"/>
+  	<c:import url="components/nav.jsp"/>
+  	
+  	<!-- Exibir alerta de cadastro -->
+  	<c:if test="${ tentativaCadastro && !cadastroEfetuado }">
+  	
+  		<div class="container mb-4">
+  		
+	  		<div class="alert alert-danger alert-dismissible fade show">
+  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  			<strong>Erro!</strong> Usuário já cadastrado.
+			</div>
+	  		
+  		</div>
+  		
+  		<!-- Auto close alert -->
+  		<script type="text/javascript">
+	  		window.setTimeout(function() {
+	  			$(".alert").alert('close');
+	  		}, 3000);
+  		</script>
+  		
+  	</c:if>
  	 
  	 <div class="container my-5 pt-5">
 		<div class="row justify-content-center">
 			<div class="col col-md-9 col-lg-7 col-xl-6">
 			  	<div class="card">
 			  		<div class="card-body">
-			  			<form action="../../UsuarioServlet" method="post">
+			  			<form action="UsuarioServlet" method="post">
 			  			
 			  				<div class="form-group row">
 								<label for="nome" class="col-sm-3 col-form-label">Nome:</label>
@@ -87,6 +107,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     
     <!-- Validar senha -->	 
-	 <script type="text/javascript" src="../script/cadastroUsuario.js"></script>
+	 <script type="text/javascript" src="script/cadastroUsuario.js"></script>
   </body>
 </html>

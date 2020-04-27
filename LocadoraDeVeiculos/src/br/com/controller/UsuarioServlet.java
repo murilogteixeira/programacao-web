@@ -45,9 +45,19 @@ public class UsuarioServlet extends HttpServlet {
 		UsuarioBO usuarioBO = new UsuarioBO();
 		UsuarioBean usuarioCadastrado = usuarioBO.insereUsuario(nome, email, senha);
 		
-		request.setAttribute("usuarioCadastrado", usuarioCadastrado);
-		request.setAttribute("cadastroEfetuado", true);
-		request.getRequestDispatcher("src/pages/login.jsp").forward(request, response);
+		request.setAttribute("tentativaCadastro", true);
+		
+		if(usuarioCadastrado != null) {
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.setAttribute("cadastroEfetuado", true);
+			request.setAttribute("usuarioCadastrado", usuarioCadastrado);
+		}
+		else {
+			request.getRequestDispatcher("cadastroUsuario.jsp").forward(request, response);
+			request.setAttribute("cadastroEfetuado", false);
+			request.setAttribute("msgErro", "Usuário já cadastrado.");
+		}
+		
 	}
 
 }

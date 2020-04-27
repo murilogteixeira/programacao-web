@@ -44,15 +44,15 @@ if(pgNameObj != null) {
 				<!-- Se logado -->
 				<c:if test="${ logado }">
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navDrop">Menu Admin</a>
+						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navDrop">${ usuarioNome }</a>
 
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="cadastrarVeiculo.jsp">Cadastrar veículo</a>
+							<a class="dropdown-item" href="cadastrarVeiculo.jsp">Novo veículo</a>
 							<a class="dropdown-item" href="#">Usuários</a>
 						</div>
 					</li>
 					<li class="navbar-item">
-						<form action="../../LoginServlet" method="post" id="form">
+						<form action="LoginServlet" method="post" id="form">
 							<a class="nav-link" href="#" onclick="document.getElementById('form').submit()">Sair</a>
 							<%session.setAttribute("loginOption", "sair");%>
 						</form>
