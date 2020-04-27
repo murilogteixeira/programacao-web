@@ -17,14 +17,9 @@
 <body>
   	
 	<!-- Navbar -->
-  	<c:import url="../components/nav.jsp"/>
+  	<c:import url="components/nav.jsp"/>
   	
   	<!-- Exibir alerta de cadastro -->
-  	<%
-  	String tipoAlerta;
-  	String msg;
-  	%>
-  
   	<c:if test="${ cadastroEfetuado }">
   	
   		<div class="container mb-4">
@@ -63,7 +58,7 @@
 				<div class="card">
 					<div class="card-body">
 					
-						<form action="../../LoginServlet" method="post">
+						<form action="LoginServlet" method="post">
 						
 							<div class="form-group">
 								<label for="email">Email:</label>

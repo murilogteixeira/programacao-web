@@ -27,7 +27,7 @@
   	%>
   
   	<!-- Navbar -->
-  	<c:import url="../components/nav.jsp"/>
+  	<c:import url="components/nav.jsp"/>
   
   	<!-- Exibir alerta de cadastro -->
   	<c:if test="${ veiculoCadastrado }">
@@ -70,7 +70,7 @@
 								<small class="card-text">${ carro.marca }</small>
 								<h6 class="card-text text-right"><small>R$</small> ${ carro.preco }</h6>
 								
-								<form action="../../EscolherVeiculoServlet" method="post">
+								<form action="EscolherVeiculoServlet" method="post">
 									<input type="hidden" name="veiculoId" value="${ carro.id }">
 									<a href="#" class="btn btn-primary stretched-link w-100 mt-3" onclick="this.parentNode.submit()">Escolher</a>
 								</form>

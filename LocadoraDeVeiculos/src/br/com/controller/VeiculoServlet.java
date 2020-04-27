@@ -47,7 +47,7 @@ public class VeiculoServlet extends HttpServlet {
 		boolean carroCadastrado = veiculoBO.insereVeiculo(marca, modelo, foto, preco);
 		
 		request.getSession().setAttribute("veiculoCadastrado", carroCadastrado);
-		response.sendRedirect("src/pages/listaCarros.jsp");
+		response.sendRedirect("listaCarros.jsp");
 	}
 
 }

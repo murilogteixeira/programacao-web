@@ -16,15 +16,22 @@
   </head>
   <body>
   
+  <!-- Validar usuario logado -->
+  <%
+  if(!(boolean)session.getAttribute("logado")) {
+	  response.sendRedirect("index.jsp");
+  }
+  %>
+  
     <!-- Navbar -->
-  	<c:import url="../components/nav.jsp"/>
+  	<c:import url="components/nav.jsp"/>
 	  
 	<div class="container my-5 pt-5">
 		<div class="row justify-content-center">
 			<div class="col col-md-9 col-lg-7 col-xl-6">
 			  	<div class="card">
 			  		<div class="card-body">
-			  			<form action="../../VeiculoServlet" method="post">
+			  			<form action="VeiculoServlet" method="post">
 			  			
 			  				<div class="form-group">
 								<label for="marca">Marca:</label>
