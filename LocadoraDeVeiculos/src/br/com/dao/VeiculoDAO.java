@@ -10,12 +10,14 @@ public class VeiculoDAO {
 	public VeiculoDAO() {
 		if(lista == null) {
 			lista = new ArrayList<>();
-			VeiculoBean veiculo1 = new VeiculoBean("VW", "Gol", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, getProxId());
+			VeiculoBean veiculo1 = new VeiculoBean("Volkwagem", "Arteon", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, getProxId());
 			lista.add(veiculo1);
-			VeiculoBean veiculo2 = new VeiculoBean("VW", "Gol", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, getProxId());
+			VeiculoBean veiculo2 = new VeiculoBean("Dodge", "Challenger", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, getProxId());
 			lista.add(veiculo2);
-			VeiculoBean veiculo3 = new VeiculoBean("VW", "Gol", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, getProxId());
+			VeiculoBean veiculo3 = new VeiculoBean("Audi", "RS6", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, getProxId());
 			lista.add(veiculo3);
+			VeiculoBean veiculo4 = new VeiculoBean("Renault", "Optima", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, getProxId());
+			lista.add(veiculo4);
 		}
 	}
 	

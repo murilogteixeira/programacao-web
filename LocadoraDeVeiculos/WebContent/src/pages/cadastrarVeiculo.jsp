@@ -24,7 +24,7 @@
 			<div class="col col-md-9 col-lg-7 col-xl-6">
 			  	<div class="card">
 			  		<div class="card-body">
-			  			<form action="VeiculoServlet" method="post">
+			  			<form action="../../VeiculoServlet" method="post">
 			  			
 			  				<div class="form-group">
 								<label for="marca">Marca:</label>

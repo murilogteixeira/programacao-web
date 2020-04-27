@@ -33,7 +33,7 @@
   	<c:if test="${ veiculoCadastrado }">
   		<div class="container mb-4">
 	  		<div class="alert alert-success alert-dismissible fade show">
-  			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 	  			<strong>Sucesso!</strong> Veículo cadastrado.
 			</div>
   		</div>
@@ -55,7 +55,7 @@
   	<!-- Exibir veiculos -->
 	<div class="container">
 		<div class="card-deck">
-			<div class="row justify-content-center">
+			<div class="row">
 			
 				<c:forEach var="carro" items="${ dao.lista() }">
 				
@@ -63,21 +63,17 @@
 						<div class="card mx-0">
 						
 							<%-- <img class="card-img-top" src="${ carro.foto }"> --%>
-							<img class="card-img-top" src="https://picsum.photos/400">
+							<img class="card-img-top" src="https://picsum.photos/300">
 							
 							<div class="card-body">
 								<h5 class="card-title mb-0">${ carro.modelo }</h5>	
 								<small class="card-text">${ carro.marca }</small>
 								<h6 class="card-text text-right"><small>R$</small> ${ carro.preco }</h6>
-							</div>
-		
-							<div class="card-footer">
-							
-								<form action="EscolherVeiculoServlet" method="post">
-									<input type="hidden" name="veiculoId" value="${ carro.id }">
-									<a href="#" class="btn btn-primary w-100" onclick="this.parentNode.submit()">Escolher</a>
-								</form>
 								
+								<form action="../../EscolherVeiculoServlet" method="post">
+									<input type="hidden" name="veiculoId" value="${ carro.id }">
+									<a href="#" class="btn btn-primary stretched-link w-100 mt-3" onclick="this.parentNode.submit()">Escolher</a>
+								</form>
 							</div>
 							
 						</div>

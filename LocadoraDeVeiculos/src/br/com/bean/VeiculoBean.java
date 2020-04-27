@@ -52,4 +52,10 @@ public class VeiculoBean {
 		return id;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Id: " + id + " Marca: " + marca + " Modelo: " + modelo + " Preço: " + preco;
+	}
+	
 }

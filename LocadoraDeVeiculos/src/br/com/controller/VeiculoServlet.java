@@ -44,10 +44,10 @@ public class VeiculoServlet extends HttpServlet {
 		Double preco = Double.parseDouble(request.getParameter("txtPreco"));
 		
 		VeiculoBO veiculoBO = new VeiculoBO();
-		boolean carroInserido = veiculoBO.insereVeiculo(marca, modelo, foto, preco);
+		boolean carroCadastrado = veiculoBO.insereVeiculo(marca, modelo, foto, preco);
 		
-		request.getSession().setAttribute("veiculoCadastrado", carroInserido);
-		response.sendRedirect("listaCarros.jsp");
+		request.getSession().setAttribute("veiculoCadastrado", carroCadastrado);
+		response.sendRedirect("src/pages/listaCarros.jsp");
 	}
 
 }

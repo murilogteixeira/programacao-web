@@ -7,17 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.bean.UsuarioBean;
+import br.com.bo.UsuarioBO;
+
 /**
- * Servlet implementation class IndexServlet
+ * Servlet implementation class UsuarioServlet
  */
-@WebServlet("/")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/UsuarioServlet")
+public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexServlet() {
+    public UsuarioServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +30,7 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("./src/pages/index.jsp");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -35,7 +38,16 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String nome = request.getParameter("txtNome");
+		String email = request.getParameter("txtEmail");
+		String senha = request.getParameter("txtSenha");
+		
+		UsuarioBO usuarioBO = new UsuarioBO();
+		UsuarioBean usuarioCadastrado = usuarioBO.insereUsuario(nome, email, senha);
+		
+		request.setAttribute("usuarioCadastrado", usuarioCadastrado);
+		request.setAttribute("cadastroEfetuado", true);
+		request.getRequestDispatcher("src/pages/login.jsp").forward(request, response);
 	}
 
 }

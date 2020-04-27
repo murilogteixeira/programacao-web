@@ -25,7 +25,7 @@ if(pgNameObj != null) {
 				</li>
 
 				<li class="navbar-item">
-					<a class="nav-link" href="listaCarros.jsp">Modelos</a>
+					<a class="nav-link" href="listaCarros.jsp">Alugue um carro</a>
 				</li>
 
 				<li class="nav-item dropdown">
@@ -48,10 +48,11 @@ if(pgNameObj != null) {
 
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="cadastrarVeiculo.jsp">Cadastrar veículo</a>
+							<a class="dropdown-item" href="#">Usuários</a>
 						</div>
 					</li>
 					<li class="navbar-item">
-						<form action="LoginServlet" method="post" id="form">
+						<form action="../../LoginServlet" method="post" id="form">
 							<a class="nav-link" href="#" onclick="document.getElementById('form').submit()">Sair</a>
 							<%session.setAttribute("loginOption", "sair");%>
 						</form>
