@@ -7,19 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.bo.VeiculoBO;
+import br.com.bean.UsuarioBean;
+import br.com.bo.UsuarioBO;
 
 /**
- * Servlet implementation class ListaCarros
+ * Servlet implementation class UsuarioServlet
  */
-@WebServlet("/VeiculoServlet")
-public class VeiculoServlet extends HttpServlet {
+@WebServlet("/UsuarioServlet")
+public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VeiculoServlet() {
+    public UsuarioServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,7 +30,7 @@ public class VeiculoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("index.jsp");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -37,17 +38,16 @@ public class VeiculoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String nome = request.getParameter("txtNome");
+		String email = request.getParameter("txtEmail");
+		String senha = request.getParameter("txtSenha");
 		
-		String marca = request.getParameter("txtMarca");
-		String modelo = request.getParameter("txtModelo");
-		String foto = request.getParameter("txtFoto");
-		Double preco = Double.parseDouble(request.getParameter("txtPreco"));
+		UsuarioBO usuarioBO = new UsuarioBO();
+		UsuarioBean usuarioCadastrado = usuarioBO.insereUsuario(nome, email, senha);
 		
-		VeiculoBO veiculoBO = new VeiculoBO();
-		boolean carroCadastrado = veiculoBO.insereVeiculo(marca, modelo, foto, preco);
-		
-		request.getSession().setAttribute("veiculoCadastrado", carroCadastrado);
-		response.sendRedirect("src/pages/listaCarros.jsp");
+		request.setAttribute("usuarioCadastrado", usuarioCadastrado);
+		request.setAttribute("cadastroEfetuado", true);
+		request.getRequestDispatcher("src/pages/login.jsp").forward(request, response);
 	}
 
 }

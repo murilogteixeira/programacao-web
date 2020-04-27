@@ -15,29 +15,55 @@
 <title>Login - Locadora</title>
 </head>
 <body>
-
-  	<!-- Validar usuario logado -->
-  	<%
-  	Object logado = session.getAttribute("logado");
-  	if(logado != null) {
-  		if((boolean)logado) {
-  			response.sendRedirect("listaCarros.jsp");
-  			return;
-  		}
-  	}
-  	%>
   	
 	<!-- Navbar -->
-	<c:import url="nav.jsp"/>
+  	<c:import url="../components/nav.jsp"/>
+  	
+  	<!-- Exibir alerta de cadastro -->
+  	<%
+  	String tipoAlerta;
+  	String msg;
+  	%>
+  
+  	<c:if test="${ cadastroEfetuado }">
+  	
+  		<div class="container mb-4">
+  		
+	  		<% if(request.getAttribute("usuarioCadastrado") != null) { %>
+	  		
+		  		<div class="alert alert-success alert-dismissible fade show">
+	  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  			<strong>Sucesso!</strong> Usuário cadastrado.
+				</div>
+				
+	  		<% } else { %>
+	  		
+		  		<div class="alert alert-danger alert-dismissible fade show">
+	  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  			<strong>Erro!</strong> Não foi possível cadastrar usuário.
+				</div>
+				
+	  		<% } %>
+	  		
+  		</div>
+  		
+  		<!-- Auto close alert -->
+  		<script type="text/javascript">
+	  		window.setTimeout(function() {
+	  			$(".alert").alert('close');
+	  		}, 3000);
+  		</script>
+  		
+  	</c:if>
 
 	<!-- Form login -->
 	<div class="container my-5">
 		<div class="row justify-content-center">
-			<div class="col-9 pt-5">
+			<div class="col col-md-9 col-lg-7 col-xl-6 pt-5">
 				<div class="card">
 					<div class="card-body">
 					
-						<form action="LoginServlet" method="post">
+						<form action="../../LoginServlet" method="post">
 						
 							<div class="form-group">
 								<label for="email">Email:</label>
@@ -54,7 +80,12 @@
 							
 							<button type="submit" class="btn btn-primary w-100 my-1">Entrar</button>
 							
+							<div class="form-group text-center mt-2 mb-0">
+								<a class="btn btn-link" href="cadastroUsuario.jsp">Não é cadastrado? Cadastre-se aqui.</a>
+							</div>
+						
 						</form>
+						
 						
 					</div>
 				</div>

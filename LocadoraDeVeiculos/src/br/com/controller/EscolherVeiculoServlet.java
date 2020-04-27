@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.bo.VeiculoBO;
-
 /**
- * Servlet implementation class ListaCarros
+ * Servlet implementation class EscolherVeiculoServlet
  */
-@WebServlet("/VeiculoServlet")
-public class VeiculoServlet extends HttpServlet {
+@WebServlet("/EscolherVeiculoServlet")
+public class EscolherVeiculoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VeiculoServlet() {
+    public EscolherVeiculoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,7 +27,7 @@ public class VeiculoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("index.jsp");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -38,16 +36,10 @@ public class VeiculoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String marca = request.getParameter("txtMarca");
-		String modelo = request.getParameter("txtModelo");
-		String foto = request.getParameter("txtFoto");
-		Double preco = Double.parseDouble(request.getParameter("txtPreco"));
+		String veiculoId = request.getParameter("veiculoId");
+		response.getWriter().write("Veículo selecionado: " + veiculoId + "\n");
 		
-		VeiculoBO veiculoBO = new VeiculoBO();
-		boolean carroCadastrado = veiculoBO.insereVeiculo(marca, modelo, foto, preco);
-		
-		request.getSession().setAttribute("veiculoCadastrado", carroCadastrado);
-		response.sendRedirect("src/pages/listaCarros.jsp");
+		doGet(request, response);
 	}
 
 }
