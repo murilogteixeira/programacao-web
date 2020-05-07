@@ -25,6 +25,20 @@
   
     <!-- Navbar -->
   	<c:import url="components/nav.jsp"/>
+
+  	<!-- Exibir alerta de cadastro -->
+  	<c:if test="${ veiculoCadastrado }">
+  		<div class="container mb-4">
+	  		<div class="alert alert-success alert-dismissible fade show">
+  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  			<strong>Sucesso!</strong> Veículo cadastrado.
+			</div>
+  		</div>
+  		
+  		<!-- Auto close alert -->
+  		<script type="text/javascript" src="script/alert.js"></script>
+	  	<% session.setAttribute("veiculoCadastrado", null); %>
+  	</c:if>
 	  
 	<div class="container my-5 pt-5">
 		<div class="row justify-content-center">
@@ -35,29 +49,30 @@
 			  			
 			  				<div class="form-group">
 								<label for="marca">Marca:</label>
-								<input type="text" class="form-control" id="marca" name="txtMarca">
+								<input type="text" class="form-control" id="marca" name="txtMarca" required>
 							</div>
 			  			
 			  				<div class="form-group">
 								<label for="modelo">Modelo:</label>
-								<input type="text" class="form-control" id="modelo" name="txtModelo">
+								<input type="text" class="form-control" id="modelo" name="txtModelo" required>
 							</div>
 			  			
 			  				<div class="form-group">
 								<label for="foto">Foto:</label>
-								<input type="text" class="form-control" id="foto" name="txtFoto">
+								<input type="text" class="form-control" id="foto" name="txtFoto" required>
 							</div>
 			  			
 			  				<div class="form-group">
 								<label for="preco">Preço:</label>
-								<input type="text" class="form-control" id="preco" name="txtPreco">
+								<input type="text" class="form-control" id="preco" name="txtPreco" required>
 							</div>
 			  			
 			  				<div class="form-group">
 								<label for="descricao">Descrição:</label>
-								<input type="text" class="form-control" id="descricao" name="txtDescricao">
+								<input type="text" class="form-control" id="descricao" name="txtDescricao" required>
 							</div>
 							
+							<input type="hidden" name="opcao" value="cadastrar">
 							<button type="submit" class="btn btn-primary w-100 my-1">Cadastrar</button>
 							
 			  			</form>

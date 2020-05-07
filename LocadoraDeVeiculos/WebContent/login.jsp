@@ -43,11 +43,7 @@
   		</div>
   		
   		<!-- Auto close alert -->
-  		<script type="text/javascript">
-	  		window.setTimeout(function() {
-	  			$(".alert").alert('close');
-	  		}, 3000);
-  		</script>
+  		<script type="text/javascript" src="script/alert.js"></script>
   		
   	</c:if>
 
@@ -62,12 +58,12 @@
 						
 							<div class="form-group">
 								<label for="email">Email:</label>
-								<input type="email" class="form-control" id="email" name="txtEmail">
+								<input type="email" class="form-control" id="email" name="txtEmail" required>
 							</div>
 							
 							<div class="form-group">
 								<label for="senha">Senha:</label>
-								<input type="password" class="form-control" id="senha" name="txtSenha">
+								<input type="password" class="form-control" id="senha" name="txtSenha" required>
 								<c:if test="${ msg != null }">
 									<small class="text-danger form-text">${ msg }</small>
 								</c:if>

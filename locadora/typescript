@@ -1,0 +1,23 @@
+Script started on Sat May  2 16:23:17 2020
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+bash: parse_git_branch: command not found
+[?1034hlocadora[32m[00m $ ./script.sh -r -t 4 pwd[C[C[C[C[C[C[C[C[C[C[C[K./script.sh -r -t 4 pwd[C[C[C[C[C[C[C[C[C[C[C[Kscript.sh
+Foram digitados 0 parâmetros. São eles: .
+O primeiro parâmetro foi:
+O nome do script é: /Users/muriloteixeira/development/shell/script.sh
+locadora
+bash: parse_git_branch: command not found
+locadora[32m[00m $ mvn-build.sh 
+bash: parse_git_branch: command not found
+locadora[32m[00m $ tomcat.sh clean
+/Users/muriloteixeira/development/shell/tomcat.sh: line 25: tomcat-clean: command not found
+--> Tomcat webapps limpo
+bash: parse_git_branch: command not found
+locadora[32m[00m $ tomcat.sh clean
+rm: tomcatdir/webapps/*.war: No such file or directory
+--> Tomcat webapps limpo
+bash: parse_git_branch: command not found
+locadora[32m[00m $ 
