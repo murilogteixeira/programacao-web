@@ -47,8 +47,6 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute("logado", true);
 			request.getSession().setAttribute("dataHoraLogin", new Date());
 			response.sendRedirect("listaCarros.jsp");
-			
-			System.out.println("LoginServlet: usuario autenticado -> " + usuarioAutenticado.toString());
 		}
 		else {
 			request.setAttribute("msg", "Email ou senha inválido!");

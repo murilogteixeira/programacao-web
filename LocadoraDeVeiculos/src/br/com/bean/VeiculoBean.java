@@ -6,14 +6,28 @@ public class VeiculoBean {
 	private String foto;
 	private Double preco;
 	private Integer id;
+	private boolean alugado;
+	private String descricao;
 	
-	public VeiculoBean(String marca, String modelo, String foto, Double preco, Integer id) {
+	public VeiculoBean(String marca, String modelo, String foto, Double preco, String descricao, Integer id) {
 		super();
 		this.marca = marca;
 		this.modelo = modelo;
 		this.foto = foto;
 		this.preco = preco;
 		this.id = id;
+		this.alugado = false;
+		this.descricao = descricao;
+	}
+	
+	public VeiculoBean(String marca, String modelo, String foto, Double preco, String descricao) {
+		super();
+		this.marca = marca;
+		this.modelo = modelo;
+		this.foto = foto;
+		this.preco = preco;
+		this.alugado = false;
+		this.descricao = descricao;
 	}
 
 	public String getMarca() {
@@ -48,13 +62,28 @@ public class VeiculoBean {
 		this.preco = preco;
 	}
 
+	public void setAlugado(boolean alugado) {
+		this.alugado = alugado;
+	}
+	
+	public boolean getAlugado() {
+		return alugado;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
 	public Integer getId() {
 		return id;
 	}
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return "Id: " + id + " Marca: " + marca + " Modelo: " + modelo + " Preço: " + preco;
 	}
 	
