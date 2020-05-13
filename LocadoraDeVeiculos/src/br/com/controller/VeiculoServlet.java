@@ -1,6 +1,7 @@
 package br.com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -9,56 +10,66 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import org.apache.taglibs.standard.lang.jstl.IntegerLiteral;
+import org.json.JSONObject;
+
 import br.com.bean.VeiculoBean;
 import br.com.bo.VeiculoBO;
 
-/**
- * Servlet implementation class ListaCarros
- */
 @WebServlet("/VeiculoServlet")
 public class VeiculoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public VeiculoServlet() {
 		super();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		res.sendRedirect("index.jsp");
+		
+		Object filter = req.getParameter("filter");
+		if (filter != null) {
+			req.getSession().setAttribute("carros", listar((String)filter));
+			req.getSession().setAttribute("filter", (String)filter);
+			req.getRequestDispatcher("index.jsp").forward(req, res);
+		}
+		else {
+			res.sendRedirect("index.jsp");
+		}
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		boolean logado = (boolean) req.getSession().getAttribute("logado");
-		if (!logado) {
-			doGet(req, res);
+		Object logadoObj = req.getSession().getAttribute("logado");
+		if (logadoObj != null) {
+			if(!(boolean)logadoObj) {
+				doGet(req, res);
+			}
 		}
 
-		switch (req.getParameter("opcao")) {
-			case "cadastrar":
-				cadastrar(req, res);
-				break;
-			case "alugar":
-				alugar(req, res);
-				break;
-			case "devolver":
-				devolver(req, res);
-				break;
-			default:
-				break;
+		Object opcao = req.getParameter("opcao");
+		if(opcao != null) {
+			switch ((String)opcao) {
+				case "cadastrar":
+					cadastrar(req, res);
+					break;
+				case "alugar":
+					alugar(req, res);
+					break;
+				case "devolver":
+					devolver(req, res);
+					break;
+				case "buscarId":
+					buscarId(req, res);
+					break;
+				default:
+					break;
+			}
 		}
-
+		
+ 
 	}
 
 	public void cadastrar(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -72,45 +83,44 @@ public class VeiculoServlet extends HttpServlet {
 		boolean carroCadastrado = veiculoBO.insereVeiculo(marca, modelo, foto, preco, descricao);
 
 		req.getSession().setAttribute("veiculoCadastrado", carroCadastrado);
-		res.sendRedirect("cadastrarVeiculo.jsp");
+		res.sendRedirect("index.jsp");
 	}
 
 	public void alugar(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		Integer veiculoId = Integer.parseInt(req.getParameter("veiculoId"));
 		VeiculoBO veiculoBO = new VeiculoBO();
-		veiculoBO.alugar(veiculoId, true);
+		veiculoBO.alugarVeiculo(veiculoId, true);
 
-		res.sendRedirect("listaCarros.jsp");
+		req.getRequestDispatcher("index.jsp").forward(req, res);
 	}
 
 	public void devolver(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		Integer veiculoId = Integer.parseInt(req.getParameter("veiculoId"));
 		VeiculoBO veiculoBO = new VeiculoBO();
-		veiculoBO.alugar(veiculoId, false);
+		veiculoBO.alugarVeiculo(veiculoId, false);
 
-		res.sendRedirect("listaCarros.jsp");
+		res.sendRedirect("index.jsp");
 	}
 
 	public ArrayList<VeiculoBean> listar() {
-		// ArrayList<VeiculoBean> lista = new ArrayList<>();
-		// VeiculoBean veiculo1 = new VeiculoBean("Volkwagem", "Arteon", "https://i0.statig.com.br/bancodeimagens/de/2a/rt/de2art1u6pp04a0dzhnwf4ess.jpg", 125.0, "", 0);
-		// lista.add(veiculo1);
-		// VeiculoBean veiculo2 = new VeiculoBean("Dodge", "Challenger", "https://combustivel.app/imgs/t650/consumo-rs6-avant-performance-4-0-v8-tfsi.jpg", 125.0, "", 1);
-		// lista.add(veiculo2);
-		// VeiculoBean veiculo3 = new VeiculoBean("Audi", "RS6", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, "", 2);
-		// lista.add(veiculo3);
-		// VeiculoBean veiculo4 = new VeiculoBean("Renault", "Optima", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, "", 3);
-		// lista.add(veiculo4);
-		// VeiculoBean veiculo5 = new VeiculoBean("Volkwagem", "Arteon", "https://i0.statig.com.br/bancodeimagens/de/2a/rt/de2art1u6pp04a0dzhnwf4ess.jpg", 125.0, "", 0);
-		// lista.add(veiculo5);
-		// VeiculoBean veiculo6 = new VeiculoBean("Dodge", "Challenger", "https://combustivel.app/imgs/t650/consumo-rs6-avant-performance-4-0-v8-tfsi.jpg", 125.0, "", 1);
-		// lista.add(veiculo6);
-		// VeiculoBean veiculo7 = new VeiculoBean("Audi", "RS6", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, "", 2);
-		// lista.add(veiculo7);
-		// VeiculoBean veiculo8 = new VeiculoBean("Renault", "Optima", "https://i.ytimg.com/vi/shjCEUR5PjQ/maxresdefault.jpg", 125.0, "", 3);
-		// lista.add(veiculo8);
-		// return lista;
-		return new VeiculoBO().lista();
+		return new VeiculoBO().listarTodos();
+	}
+
+	public ArrayList<VeiculoBean> listar(String filter) {
+		return new VeiculoBO().listarModelos(filter);
+	}
+
+	public void buscarId(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		Integer id = Integer.parseInt(req.getParameter("id"));
+		VeiculoBean veiculo = new VeiculoBO().buscarId(id);
+		
+		String veiculoJson = new Gson().toJson(veiculo);
+		
+		PrintWriter out = res.getWriter();
+		res.setContentType("application/json");
+		res.setCharacterEncoding("UTF-8");
+		out.print(veiculoJson);
+		out.flush();
 	}
 
 }

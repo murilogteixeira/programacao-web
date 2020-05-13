@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 
@@ -40,7 +40,7 @@
 				
 	  		<% } %>
 	  		
-  		</div>
+  		</div> 
   		
   		<!-- Auto close alert -->
   		<script type="text/javascript" src="script/alert.js"></script>
@@ -54,7 +54,7 @@
 				<div class="card">
 					<div class="card-body">
 					
-						<form action="LoginServlet" method="post">
+						<form action="UsuarioServlet" method="post">
 						
 							<div class="form-group">
 								<label for="email">Email:</label>
@@ -69,6 +69,7 @@
 								</c:if>
 							</div>
 							
+							<input type="hidden" name="opcao" value="login">
 							<button type="submit" class="btn btn-primary w-100 my-1">Entrar</button>
 							
 							<div class="form-group text-center mt-2 mb-0">

@@ -1,5 +1,6 @@
 package br.com.bean;
 
+
 public class VeiculoBean {
 	private String marca;
 	private String modelo;

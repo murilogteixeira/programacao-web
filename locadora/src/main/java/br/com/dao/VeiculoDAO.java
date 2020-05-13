@@ -45,17 +45,28 @@ public class VeiculoDAO {
 			ps.setBoolean(5, veiculo.getAlugado());
 			ps.setString(6, veiculo.getDescricao());
 			ps.setInt(7, veiculo.getId());
+			ps.execute();
+			ps.close();
+			return true;
+		} catch (Exception e) {
+			throw new RuntimeException("Erro: " + e.getLocalizedMessage());
+		}
+	}
+	
+	public boolean deletarVeiculo(Integer id) {
+		String sql = "DELETE FROM carro WHERE id = ?";
+		try {
+			if(buscarVeiculo(id).getAlugado()) {
+				return false;
+			}
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
 			boolean ok = ps.execute();
 			ps.close();
 			return ok;
 		} catch (Exception e) {
 			throw new RuntimeException("Erro: " + e.getLocalizedMessage());
 		}
-	}
-	
-	public boolean removeVeiculo(VeiculoBean veiculo) {
-		// return lista.remove(veiculo);
-		return false;
 	}
 	
 	public ArrayList<VeiculoBean> lista() {

@@ -18,14 +18,20 @@ public class VeiculoBO {
 		return false;
 	}
 
-	public void atualizarVeiculo(VeiculoBean veiculo) {
-		veiculoDAO.atualizaVeiculo(veiculo);
+	public boolean atualizarVeiculo(VeiculoBean veiculo) {
+		VeiculoBean v = veiculoDAO.buscarVeiculo(veiculo.getId());
+		veiculo.setAlugado(v.getAlugado());
+		return veiculoDAO.atualizaVeiculo(veiculo);
 	}
 
-	public void alugarVeiculo(Integer id, boolean alugado) {
+	public boolean deletarVeiculo(Integer id) {
+		return veiculoDAO.deletarVeiculo(id);
+	}
+
+	public boolean alugarVeiculo(Integer id, boolean alugado) {
 		VeiculoBean veiculo = veiculoDAO.buscarVeiculo(id);
 		veiculo.setAlugado(alugado);
-		veiculoDAO.atualizaVeiculo(veiculo);
+		return veiculoDAO.atualizaVeiculo(veiculo);
 	}
 
 	public ArrayList<VeiculoBean> listarTodos() {
@@ -34,5 +40,9 @@ public class VeiculoBO {
 
 	public ArrayList<VeiculoBean> listarModelos(String filter) {
 		return veiculoDAO.lista(filter);
+	}
+
+	public VeiculoBean buscarId(Integer id) {
+		return veiculoDAO.buscarVeiculo(id);
 	}
 }

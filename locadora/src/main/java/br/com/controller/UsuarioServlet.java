@@ -1,6 +1,8 @@
 package br.com.controller;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,45 +18,99 @@ import br.com.bo.UsuarioBO;
 @WebServlet("/UsuarioServlet")
 public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UsuarioServlet() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public UsuarioServlet() {
+		super();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nome = request.getParameter("txtNome");
-		String email = request.getParameter("txtEmail");
-		String senha = request.getParameter("txtSenha");
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.sendRedirect("index.jsp");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		Object opcao = req.getParameter("opcao");
+		if (opcao != null) {
+			switch ((String) opcao) {
+				case "cadastro":
+					cadastrar(req, res);
+					break;
+				case "login":
+					login(req, res);
+					break;
+				default:
+					doGet(req, res);
+					break;
+			}
+		}
+	}
+
+	private void cadastrar(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String nome = req.getParameter("txtNome");
+		String email = req.getParameter("txtEmail");
+		String senha = req.getParameter("txtSenha");
+
 		UsuarioBO usuarioBO = new UsuarioBO();
 		UsuarioBean usuarioCadastrado = usuarioBO.insereUsuario(nome, email, senha);
 
-		request.setAttribute("tentativaCadastro", true);
-		
-		if(usuarioCadastrado != null) {
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-			request.setAttribute("cadastroEfetuado", true);
-			request.setAttribute("usuarioCadastrado", usuarioCadastrado);
+		req.setAttribute("tentativaCadastro", true);
+
+		if (usuarioCadastrado != null) {
+			req.getRequestDispatcher("login.jsp").forward(req, res);
+			req.setAttribute("cadastroEfetuado", true);
+			req.setAttribute("usuarioCadastrado", usuarioCadastrado);
+		} else {
+			req.getRequestDispatcher("cadastroUsuario.jsp").forward(req, res);
+			req.setAttribute("cadastroEfetuado", false);
+			req.setAttribute("msgErro", "Usuário já cadastrado.");
 		}
-		else {
-			request.getRequestDispatcher("cadastroUsuario.jsp").forward(request, response);
-			request.setAttribute("cadastroEfetuado", false);
-			request.setAttribute("msgErro", "Usuário já cadastrado.");
+	}
+
+	private void login(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		Object loginOption = req.getSession().getAttribute("loginOption");
+		if(loginOption != null) {
+			switch ((String) loginOption) {
+				case "entrar":
+					entrar(req, res);
+					break;
+				case "sair":
+					req.getSession().setAttribute("usuarioLogado", null);
+					req.getSession().setAttribute("logado", false);
+					res.sendRedirect("index.jsp");
+					break;
+				default:
+					doGet(req, res);
+			}
 		}
-		
+	}
+
+	private void entrar(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String email = req.getParameter("txtEmail");
+		String senha = req.getParameter("txtSenha");
+
+		UsuarioBO usuarioBO = new UsuarioBO();
+		UsuarioBean usuarioAutenticado = usuarioBO.autenticar(email, senha);
+
+		if (usuarioAutenticado != null) {
+			req.getSession().setAttribute("usuarioNome", usuarioAutenticado.getNome());
+			req.getSession().setAttribute("logado", true);
+			req.getSession().setAttribute("dataHoraLogin", new Date());
+			res.sendRedirect("index.jsp");
+		} else {
+			req.setAttribute("msg", "Email ou senha inválido!");
+			req.getSession().setAttribute("logado", false);
+			req.getRequestDispatcher("login.jsp").forward(req, res);
+		}
 	}
 
 }

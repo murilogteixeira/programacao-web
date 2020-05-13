@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -95,6 +94,7 @@
 								</div>
 							</div>
 
+							<input type="hidden" name="opcao" value="cadastro">
 							<button type="submit" class="btn btn-primary w-100 my-1">Cadastrar</button>
 
 						</form>

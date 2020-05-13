@@ -1,5 +1,6 @@
 package br.com.bean;
 
+
 public class VeiculoBean {
 	private String marca;
 	private String modelo;
@@ -9,14 +10,14 @@ public class VeiculoBean {
 	private boolean alugado;
 	private String descricao;
 	
-	public VeiculoBean(String marca, String modelo, String foto, Double preco, String descricao, Integer id) {
+	public VeiculoBean(String marca, String modelo, String foto, Double preco, String descricao, Integer id, boolean alugado) {
 		super();
 		this.marca = marca;
 		this.modelo = modelo;
 		this.foto = foto;
 		this.preco = preco;
 		this.id = id;
-		this.alugado = false;
+		this.alugado = alugado;
 		this.descricao = descricao;
 	}
 	
