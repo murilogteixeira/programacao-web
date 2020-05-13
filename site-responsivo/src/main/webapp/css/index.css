@@ -1,0 +1,27 @@
+.div1 {
+    float: left;
+    background-color: yellow;
+    height: 200px;
+}
+
+.div2 {
+    float: left;
+    background-color: pink;
+    height: 200px;
+}
+
+.div3 {
+    float: left;
+    background-color: orange;
+    height: 200px;
+}
+
+.responsivo {
+    width: 33%;
+}
+
+@media only screen and (max-width: 768px) {
+    .responsivo {
+        width: 100%;
+    }
+}

@@ -1,6 +1,7 @@
 package br.com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
 
 import br.com.bean.VeiculoBean;
 import br.com.bo.VeiculoBO;
@@ -49,11 +52,20 @@ public class VeiculoServlet extends HttpServlet {
 				case "cadastrar":
 					cadastrar(req, res);
 					break;
+				case "alterar":
+					alterar(req, res);
+					break;
+				case "deletar":
+					deletar(req, res);
+					break;
 				case "alugar":
 					alugar(req, res);
 					break;
 				case "devolver":
 					devolver(req, res);
+					break;
+				case "buscarId":
+					buscarId(req, res);
 					break;
 				default:
 					break;
@@ -74,7 +86,34 @@ public class VeiculoServlet extends HttpServlet {
 		boolean carroCadastrado = veiculoBO.insereVeiculo(marca, modelo, foto, preco, descricao);
 
 		req.getSession().setAttribute("veiculoCadastrado", carroCadastrado);
-		res.sendRedirect("cadastrarVeiculo.jsp");
+		res.sendRedirect("index.jsp");
+	}
+
+	public void alterar(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		Integer veiculoId = Integer.parseInt(req.getParameter("veiculoId"));
+		String marca = req.getParameter("txtMarca");
+		String modelo = req.getParameter("txtModelo");
+		String foto = req.getParameter("txtFoto");
+		String descricao = req.getParameter("txtDescricao");
+		Double preco = Double.parseDouble(req.getParameter("txtPreco"));
+
+		VeiculoBean veiculo = new VeiculoBean(marca, modelo, foto, preco, descricao, veiculoId, false);
+
+		VeiculoBO veiculoBO = new VeiculoBO();
+		boolean carroCadastrado = veiculoBO.atualizarVeiculo(veiculo);
+		System.out.println(carroCadastrado);
+
+		res.sendRedirect("index.jsp");
+	}
+
+	public void deletar(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		Integer veiculoId = Integer.parseInt(req.getParameter("veiculoId"));
+
+		VeiculoBO veiculoBO = new VeiculoBO();
+		boolean carroDeletado = veiculoBO.deletarVeiculo(veiculoId);
+		System.out.println(carroDeletado);
+
+		res.sendRedirect("index.jsp");
 	}
 
 	public void alugar(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -99,6 +138,19 @@ public class VeiculoServlet extends HttpServlet {
 
 	public ArrayList<VeiculoBean> listar(String filter) {
 		return new VeiculoBO().listarModelos(filter);
+	}
+
+	public void buscarId(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		Integer id = Integer.parseInt(req.getParameter("id"));
+		VeiculoBean veiculo = new VeiculoBO().buscarId(id);
+		
+		String veiculoJson = new Gson().toJson(veiculo);
+		
+		PrintWriter out = res.getWriter();
+		res.setContentType("application/json");
+		res.setCharacterEncoding("UTF-8");
+		out.print(veiculoJson);
+		out.flush();
 	}
 
 }

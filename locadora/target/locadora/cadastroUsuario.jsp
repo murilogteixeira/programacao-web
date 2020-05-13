@@ -46,7 +46,7 @@
 		</div>
 
 		<!-- Auto close alert -->
-		<script type="text/javascript" src="script/alert.js"></script>
+		<script type="text/javascript" src="js/alert.js"></script>
 
 	</c:if>
 
@@ -94,6 +94,7 @@
 								</div>
 							</div>
 
+							<input type="hidden" name="opcao" value="cadastro">
 							<button type="submit" class="btn btn-primary w-100 my-1">Cadastrar</button>
 
 						</form>
@@ -115,7 +116,7 @@
 		crossorigin="anonymous"></script>
 
 	<!-- Validar senha -->
-	<script type="text/javascript" src="script/cadastroUsuario.js"></script>
+	<script type="text/javascript" src="js/cadastroUsuario.js"></script>
 </body>
 
 </html>

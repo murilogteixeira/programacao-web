@@ -84,7 +84,7 @@ public class UsuarioDAO {
 	}
 	
 	public void atualizar(UsuarioBean usuario) {
-		int id = usuario.getId();
+		// int id = usuario.getId();
 		// lista.remove(id);
 		// lista.add(id, usuario);
 	}

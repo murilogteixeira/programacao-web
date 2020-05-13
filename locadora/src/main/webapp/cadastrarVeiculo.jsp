@@ -35,7 +35,7 @@
   		</div>
   		
   		<!-- Auto close alert -->
-  		<script type="text/javascript" src="script/alert.js"></script>
+  		<script type="text/javascript" src="js/alert.js"></script>
 	  	<% session.setAttribute("veiculoCadastrado", null); %>
   	</c:if>
 	  

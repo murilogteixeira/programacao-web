@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -18,7 +17,7 @@
   
   <!-- Validar usuario logado -->
   <%
-  if(!(boolean)session.getAttribute("logado")) {
+  if(session.getAttribute("logado") != null && !(boolean)session.getAttribute("logado")) {
 	  response.sendRedirect("index.jsp");
   }
   %>
@@ -36,7 +35,7 @@
   		</div>
   		
   		<!-- Auto close alert -->
-  		<script type="text/javascript" src="script/alert.js"></script>
+  		<script type="text/javascript" src="js/alert.js"></script>
 	  	<% session.setAttribute("veiculoCadastrado", null); %>
   	</c:if>
 	  

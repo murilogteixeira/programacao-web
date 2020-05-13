@@ -1,5 +1,4 @@
 br/com/controller/UsuarioServlet.class
-br/com/controller/LoginServlet.class
 br/com/dao/ConnectionFactory.class
 br/com/bo/UsuarioBO.class
 br/com/dao/UsuarioDAO.class
