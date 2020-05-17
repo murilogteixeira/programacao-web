@@ -12,11 +12,10 @@ $('#veiculoModal').on('show.bs.modal', function (event) {
     }).toString();
     const callback = (carro) => {
         console.log(carro);
-
         modal.find('#foto').attr("src", carro.foto);
         modal.find('#modelo').text(carro.modelo);
         modal.find('#marca').text(carro.marca);
-        modal.find('#preco').text('R$ ' + Number(carro.preco).toFixed(2));
+        modal.find('#preco').text(Number(carro.preco).toFixed(2));
         modal.find('#descricao').text(carro.descricao);
         modal.find('#veiculoId').val(carro.id);
         
@@ -32,77 +31,15 @@ $('#veiculoModal').on('show.bs.modal', function (event) {
             modal.find('#alugarButton').text('Alugar');
             modal.find('#alugarButton').toggleClass('btn-success btn-primary');
         }
-        
     };
 
     request(method, url, params, callback);
 });
 
-$('#cadastroCarroModal').on('show.bs.modal', function (event) {
-    var modal = $(this);
-    
-    modal.find('#deletarBtn').hide();
-
-    var veiculoId = modal.data('veiculoId');
-
-    if(veiculoId !== '') {
-        const method = 'POST';
-        const url = 'VeiculoServlet';
-        const params = new URLSearchParams({
-            opcao: "buscarId",
-            id: veiculoId,
-        }).toString();
-        const callback = (carro) => {    
-            modal.find('#foto').val(carro.foto);
-            modal.find('#modelo').val(carro.modelo);
-            modal.find('#marca').val(carro.marca);
-            modal.find('#preco').val(Number(carro.preco).toFixed(2));
-            modal.find('#descricao').val(carro.descricao);
-            modal.find('#veiculoId').val(carro.id);
-            modal.find('#salvarBtn').text('Alterar');
-            modal.find('#opcao').val('alterar');
-            modal.find('#deletarBtn').show();
-        };
-    
-        request(method, url, params, callback);
-        modal.data('veiculoId', null);
-    }
-    else {
-        modal.find('#foto').val('');
-        modal.find('#modelo').val('');
-        modal.find('#marca').val('');
-        modal.find('#preco').val('');
-        modal.find('#descricao').val('');
-        modal.find('#veiculoId').val('');
-        modal.find('#salvarBtn').text('Cadastrar');
-        modal.find('#opcao').val('cadastrar');
-        modal.find('#deletarBtn').hide();
-    }
-});
-
-$('#alugarButton').on('click', () => {
+$( "#alugarButton" ).on( "click", function() {
     // $(this).toggleClass('btn-success btn-primary');
     $('#formAlugar').submit();
 });
-
-$('#editarBtn').on('click', () => {
-    var veiculoId = $('#veiculoModal').find('#veiculoId').val();
-    $('.close').click();
-    $('#cadastroCarroModal').data('veiculoId', veiculoId).modal();
-});
-
-$('#deletarBtn').on('click', () => {
-    $('#cadastroCarroModal').find('#opcao').val('deletar');
-});
-
-// $('#salvarBtn').click(() => {
-//     if($(this).text() === 'Cadastrar') {
-//         $('#cadastroCarroModal').find('#opcao').val('cadastrar');
-//     }
-//     else if($(this).text() === 'Alterar') {
-//         $('#cadastroCarroModal').find('#opcao').val('alterar');
-//     }
-// });
 
 function request(method, url, params, callback) {
     var ajax = new XMLHttpRequest();
@@ -118,7 +55,7 @@ function request(method, url, params, callback) {
     }
 
     // Cria um evento para receber o retorno.
-    ajax.onreadystatechange = () => {
+    ajax.onreadystatechange = function() {
     // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
         if (ajax.readyState == 4 && ajax.status == 200) {
             // Retorno do Ajax

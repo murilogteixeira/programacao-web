@@ -49,7 +49,10 @@ public class UsuarioServlet extends HttpServlet {
 					login(req, res);
 					break;
 				default:
+<<<<<<< HEAD
 					doGet(req, res);
+=======
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 					break;
 			}
 		}
@@ -86,7 +89,11 @@ public class UsuarioServlet extends HttpServlet {
 				case "sair":
 					req.getSession().setAttribute("usuarioLogado", null);
 					req.getSession().setAttribute("logado", false);
+<<<<<<< HEAD
 					res.sendRedirect("index.jsp");
+=======
+					doGet(req, res);
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 					break;
 				default:
 					doGet(req, res);

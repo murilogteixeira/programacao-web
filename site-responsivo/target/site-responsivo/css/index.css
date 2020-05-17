@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .div1 {
     float: left;
     background-color: yellow;
@@ -25,3 +26,17 @@
         width: 100%;
     }
 }
+=======
+.leftDiv {
+    float: left;
+    background-color: yellow;
+    height: 200px;
+    width: 50%;
+}
+.rightDiv {
+    float: left;
+    background-color: pink;
+    height: 200px;
+    width: 50%;
+}
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861

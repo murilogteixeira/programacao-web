@@ -51,7 +51,11 @@
   		</div>
   		
   		<!-- Auto close alert -->
+<<<<<<< HEAD
   		<script type="text/javascript" src="js/alert.js"></script>
+=======
+  		<script type="text/javascript" src="script/alert.js"></script>
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 	  	<% session.setAttribute("veiculoCadastrado", null); %>
   	</c:if>
   
@@ -108,6 +112,7 @@
 									
 								</c:if> 
 							</div> 
+<<<<<<< HEAD
 							<c:if test="${logado}">
 								<div class="card-footer">
 									<form action="VeiculoServlet" method="post" id="form">
@@ -129,6 +134,27 @@
 										<button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#veiculoModal" data-whatever="${carro.id}" style="cursor:pointer;">Detalhes</button>
 								</div>
 							</c:if>
+=======
+							<div class="card-footer">
+								<form action="VeiculoServlet" method="post" id="form">
+									<input type="hidden" name="veiculoId" id="veiculoId" value="${ carro.id }">
+
+									<%-- <c:if test="${ carro.alugado }">
+										<input type="hidden" name="opcao" id="opcao" value="devolver">
+										<a href="#" class="btn btn-primary w-100" onclick="this.parentNode.submit()">Devolver</a>
+									</c:if>
+
+									<c:if test="${ !carro.alugado }">
+										<input type="hidden" name="opcao" id="opcao" value="alugar">
+										<a href="#" class="btn btn-success w-100" onclick="this.parentNode.submit()">Alugar</a>
+									</c:if>  --%>
+
+
+								</form>
+
+								<button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#veiculoModal" data-whatever="${carro.id}" style="cursor:pointer;">Detalhes</button>
+							</div>
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 							
 						</div>
 					</div>  
@@ -169,7 +195,11 @@
 					</div>
 				</div>
 				<div class="modal-footer">
+<<<<<<< HEAD
 					<button type="button" class="btn btn-secondary" id="editarBtn">Editar</button>
+=======
+					<button type="button" class="btn btn-secondary">Editar</button>
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 
 					<form action="VeiculoServlet" method="post" id="formAlugar">
 						<input type="hidden" name="opcao" id="opcao">
@@ -189,7 +219,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 	<%-- Modal data javascript --%>
+<<<<<<< HEAD
 	<script src="js/modalData.js" type="text/javascript" charset="utf-8"></script>
+=======
+	<script src="script/modalData.js" type="text/javascript" charset="utf-8"></script>
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 
   </body>
 </html>

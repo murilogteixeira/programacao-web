@@ -12,6 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+<<<<<<< HEAD
+=======
+import org.apache.taglibs.standard.lang.jstl.IntegerLiteral;
+import org.json.JSONObject;
+
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 import br.com.bean.VeiculoBean;
 import br.com.bo.VeiculoBO;
 
@@ -52,12 +58,15 @@ public class VeiculoServlet extends HttpServlet {
 				case "cadastrar":
 					cadastrar(req, res);
 					break;
+<<<<<<< HEAD
 				case "alterar":
 					alterar(req, res);
 					break;
 				case "deletar":
 					deletar(req, res);
 					break;
+=======
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 				case "alugar":
 					alugar(req, res);
 					break;
@@ -87,6 +96,7 @@ public class VeiculoServlet extends HttpServlet {
 
 		req.getSession().setAttribute("veiculoCadastrado", carroCadastrado);
 		res.sendRedirect("index.jsp");
+<<<<<<< HEAD
 	}
 
 	public void alterar(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -114,6 +124,8 @@ public class VeiculoServlet extends HttpServlet {
 		System.out.println(carroDeletado);
 
 		res.sendRedirect("index.jsp");
+=======
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 	}
 
 	public void alugar(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

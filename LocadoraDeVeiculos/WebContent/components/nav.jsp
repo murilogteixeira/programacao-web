@@ -23,6 +23,13 @@
                         <li class="navbar-item">
                             <a class="nav-link" href="index.jsp">Veículos</a>
                         </li>
+<<<<<<< HEAD
+=======
+
+                        <%-- <li class="navbar-item">
+                        <a class="nav-link" href="listaCarros.jsp">Veículos</a>
+                        </li> --%>
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navDrop">Contato</a>
@@ -54,6 +61,16 @@
                             <%-- Adicionar menu --%>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navDrop">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Veículos</a>
+                                    <%-- <a class="dropdown-item" href="#">Usuário</a> --%>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navDrop">
                                     <i class="fas fa-plus"></i>
                                 </a>
                                 <div class="dropdown-menu">
@@ -68,7 +85,10 @@
 
                                 <div class="dropdown-menu">
                                     <form action="UsuarioServlet" method="post" id="form">
+<<<<<<< HEAD
                                         <input type="hidden" name="opcao" value="login">
+=======
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
                                         <a class="dropdown-item" href="#" onclick="document.getElementById('form').submit()">Sair</a>
                                         <% session.setAttribute("loginOption", "sair"); %>
                                     </form>
@@ -103,6 +123,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+<<<<<<< HEAD
                     <form action="VeiculoServlet" method="post" id="cadastroForm">
                         <div class="modal-body">
 			  			
@@ -114,6 +135,19 @@
 			  				<div class="form-group">
 								<label for="marca">Marca:</label>
 								<input type="text" class="form-control" id="marca" name="txtMarca" required>
+=======
+                    <form action="VeiculoServlet" method="post">
+                        <div class="modal-body">
+			  			
+			  				<div class="form-group">
+								<label for="marca">Marca:</label>
+								<input type="text" class="form-control" id="marca" name="txtMarca" required>
+							</div>
+			  			
+			  				<div class="form-group">
+								<label for="modelo">Modelo:</label>
+								<input type="text" class="form-control" id="modelo" name="txtModelo" required>
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 							</div>
 			  			
 			  				<div class="form-group">
@@ -134,11 +168,17 @@
 							
                         </div>
                         <div class="modal-footer">
+<<<<<<< HEAD
                             <%-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --%>
 							<input type="hidden" name="opcao" id="opcao" value="cadastrar">
 							<input type="hidden" name="veiculoId" id="veiculoId">
 							<button type="submit" class="btn btn-danger" id="deletarBtn">Deletar</button>
 							<button type="submit" class="btn btn-primary" id="salvarBtn">Cadastrar</button>
+=======
+							<input type="hidden" name="opcao" value="cadastrar">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Cadastrar</button>
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
                         </div>
                     </form>
                 </div>

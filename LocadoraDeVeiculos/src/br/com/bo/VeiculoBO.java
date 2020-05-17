@@ -18,6 +18,7 @@ public class VeiculoBO {
 		return false;
 	}
 
+<<<<<<< HEAD
 	public boolean atualizarVeiculo(VeiculoBean veiculo) {
 		VeiculoBean v = veiculoDAO.buscarVeiculo(veiculo.getId());
 		veiculo.setAlugado(v.getAlugado());
@@ -32,6 +33,16 @@ public class VeiculoBO {
 		VeiculoBean veiculo = veiculoDAO.buscarVeiculo(id);
 		veiculo.setAlugado(alugado);
 		return veiculoDAO.atualizaVeiculo(veiculo);
+=======
+	public void atualizarVeiculo(VeiculoBean veiculo) {
+		veiculoDAO.atualizaVeiculo(veiculo);
+	}
+
+	public void alugarVeiculo(Integer id, boolean alugado) {
+		VeiculoBean veiculo = veiculoDAO.buscarVeiculo(id);
+		veiculo.setAlugado(alugado);
+		veiculoDAO.atualizaVeiculo(veiculo);
+>>>>>>> 8c45b2b8b3aedecb592ccc7f9f90279b50988861
 	}
 
 	public ArrayList<VeiculoBean> listarTodos() {
