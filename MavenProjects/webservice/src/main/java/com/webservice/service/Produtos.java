@@ -25,6 +25,14 @@ public class Produtos {
         return json.toString();
     }
 
+    @GET
+    @Path("lista")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getIt2() {
+        String json = new Gson().toJson(produtoDAO.lista());
+        return json;
+    }
+
     @POST
     @Path("login")
     @Consumes(MediaType.APPLICATION_JSON)

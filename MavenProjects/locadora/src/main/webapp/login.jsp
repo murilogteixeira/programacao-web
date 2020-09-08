@@ -15,7 +15,7 @@
 <title>Login - Locadora</title>
 </head>
 <body>
-  	
+  	 
 	<!-- Navbar -->
   	<c:import url="components/nav.jsp"/>
   	
